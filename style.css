@@ -1,0 +1,43 @@
+:root{--ink:#141414;--bg:#ececec;--card:#fff;--line:#d0d0d0;--soft:#f1f1f1;--muted:#5c5c5c}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--ink);line-height:1.6}
+
+/* Black header band with a stripe pattern */
+header{background:var(--ink);color:#fff;padding:44px 20px 72px;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px)}
+header>*{max-width:680px;margin-left:auto;margin-right:auto}
+h1{margin-top:0;margin-bottom:0;font-size:2rem;line-height:1.2;letter-spacing:-.01em}
+.by{margin-top:10px;margin-bottom:0;color:#bdbdbd;font-style:italic}
+
+/* Card sits over the band */
+main{max-width:720px;margin:-44px auto 0;padding:0 20px 48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px;
+  box-shadow:0 2px 0 var(--ink),0 14px 30px rgba(0,0,0,.12);animation:rise .5s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.card{animation:none}}
+
+h3{margin:28px 0 4px;font-size:1.1rem;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.note{color:var(--muted);margin-top:0}
+label{display:block;margin:16px 0 5px;font-weight:bold;font-size:.95rem}
+input{width:100%;padding:11px 12px;font:inherit;background:#fafafa;border:2px solid #9a9a9a;border-radius:8px;transition:border-color .15s,background .15s}
+input:focus{outline:none;border-color:var(--ink);background:#fff}
+
+button{margin:14px 8px 0 0;padding:11px 18px;font:inherit;background:var(--ink);color:#fff;border:2px solid var(--ink);border-radius:8px;cursor:pointer;transition:background .15s,color .15s,transform .1s}
+button:hover{background:#fff;color:var(--ink)}
+button:active{transform:translateY(1px)}
+button:focus-visible,a:focus-visible{outline:3px solid #888;outline-offset:3px}
+
+.result{margin-top:18px;padding:14px 16px;background:var(--soft);border-left:6px solid var(--ink);border-radius:6px;min-height:1.6em;font-size:1.05rem}
+
+a{color:var(--ink)}
+.back{display:inline-block;margin-top:24px;font-weight:bold}
+
+/* Numbered assignment list on the home page */
+.list{padding:0;margin:20px 0 0;list-style:none;counter-reset:a}
+.list li{counter-increment:a;margin:0 0 12px}
+.list a{display:flex;align-items:center;gap:14px;padding:14px 16px;border:2px solid var(--ink);border-radius:10px;text-decoration:none;font-weight:bold;transition:background .15s,color .15s,transform .15s}
+.list a::before{content:counter(a);flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#fff;transition:background .15s,color .15s}
+.list a:hover{background:var(--ink);color:#fff;transform:translateX(4px)}
+.list a:hover::before{background:#fff;color:var(--ink)}
+
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:0 20px 40px}

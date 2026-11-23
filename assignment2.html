@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment #2 - Income Tax Calculator</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><h1>Assignment #2 - Income Tax Calculator</h1></header>
+<main><div class="card">
+  <p class="note">Find out how much tax you'd owe on a year's income, using the Philippine TRAIN law brackets (2023 onward).</p>
+  <label for="income">Yearly income (PHP)</label>
+  <input type="number" id="income" min="0" step="any" placeholder="e.g. 500000">
+  <button onclick="computeTax()">Work out my tax</button>
+  <div class="result" id="result">Your answer will show up here.</div>
+  <a class="back" href="index.html">Back to all assignments</a>
+</div></main>
+<script>
+function computeTax() {
+  var income = parseFloat(document.getElementById("income").value);
+  var out = document.getElementById("result");
+  if (isNaN(income) || income < 0) { out.innerHTML = "Please enter your income as a number, 0 or higher."; return; }
+  var tax;
+  if (income <= 250000) tax = 0;
+  else if (income <= 400000) tax = (income - 250000) * 0.15;
+  else if (income <= 800000) tax = 22500 + (income - 400000) * 0.20;
+  else if (income <= 2000000) tax = 102500 + (income - 800000) * 0.25;
+  else if (income <= 8000000) tax = 402500 + (income - 2000000) * 0.30;
+  else tax = 2202500 + (income - 8000000) * 0.35;
+  var msg = tax === 0 ? "Good news: no income tax at this level.<br>" : "";
+  out.innerHTML = msg + "Income: PHP " + income.toFixed(2) + "<br>Income tax: PHP " + tax.toFixed(2) +
+    "<br>What you keep: PHP " + (income - tax).toFixed(2);
+}
+</script></body></html>

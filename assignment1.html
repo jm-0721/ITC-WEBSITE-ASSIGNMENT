@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment #1 - Conversion</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><h1>Assignment #1 - Conversion</h1></header>
+<main><div class="card">
+  <p class="note">Type a number, then choose which way to convert it.</p>
+  <h3>Temperature</h3>
+  <label for="temp">Temperature</label>
+  <input type="number" id="temp" step="any" placeholder="e.g. 36.5">
+  <button onclick="cToF()">Celsius to Fahrenheit</button>
+  <button onclick="fToC()">Fahrenheit to Celsius</button>
+  <div class="result" id="tempResult">Your answer will show up here.</div>
+  <h3>Length</h3>
+  <label for="len">Length</label>
+  <input type="number" id="len" step="any" placeholder="e.g. 1.75">
+  <button onclick="mToFt()">Meters to Feet</button>
+  <button onclick="ftToM()">Feet to Meters</button>
+  <div class="result" id="lenResult">Your answer will show up here.</div>
+  <a class="back" href="index.html">Back to all assignments</a>
+</div></main>
+<script>
+function getNum(id, out) {
+  var v = parseFloat(document.getElementById(id).value);
+  if (isNaN(v)) { document.getElementById(out).innerHTML = "Please type a number first."; return null; }
+  return v;
+}
+function cToF() { var c = getNum("temp","tempResult"); if (c===null) return;
+  document.getElementById("tempResult").innerHTML = c + " °C is " + (c*9/5+32).toFixed(2) + " °F."; }
+function fToC() { var f = getNum("temp","tempResult"); if (f===null) return;
+  document.getElementById("tempResult").innerHTML = f + " °F is " + ((f-32)*5/9).toFixed(2) + " °C."; }
+function mToFt() { var m = getNum("len","lenResult"); if (m===null) return;
+  document.getElementById("lenResult").innerHTML = m + " m is " + (m*3.28084).toFixed(2) + " ft."; }
+function ftToM() { var f = getNum("len","lenResult"); if (f===null) return;
+  document.getElementById("lenResult").innerHTML = f + " ft is " + (f/3.28084).toFixed(2) + " m."; }
+</script></body></html>

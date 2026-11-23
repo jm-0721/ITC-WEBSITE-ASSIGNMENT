@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment #3 - Factorial, Sum and Average</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><h1>Assignment #3 - Factorial, Sum and Average</h1></header>
+<main><div class="card">
+  <p class="note">Pick a number N, then see the factorial, sum, or average of 1 up to N. Each button uses a different kind of loop.</p>
+  <label for="n">N (a whole number, 1 or more)</label>
+  <input type="number" id="n" min="1" step="1" placeholder="e.g. 5">
+  <button onclick="factorial()">Factorial (while loop)</button>
+  <button onclick="sum()">Sum (do while loop)</button>
+  <button onclick="average()">Average (for loop)</button>
+  <div class="result" id="result">Your answer will show up here.</div>
+  <a class="back" href="index.html">Back to all assignments</a>
+</div></main>
+<script>
+function getN() {
+  var n = parseInt(document.getElementById("n").value);
+  if (isNaN(n) || n < 1) { document.getElementById("result").innerHTML = "Please enter a whole number that's 1 or more."; return null; }
+  return n;
+}
+function factorial() {
+  var n = getN(); if (n === null) return;
+  var result = 1, i = 1;
+  while (i <= n) { result *= i; i++; }
+  document.getElementById("result").innerHTML = "The factorial of " + n + " is " + result + ".";
+}
+function sum() {
+  var n = getN(); if (n === null) return;
+  var total = 0, i = 1;
+  do { total += i; i++; } while (i <= n);
+  document.getElementById("result").innerHTML = "Adding 1 up to " + n + " gives " + total + ".";
+}
+function average() {
+  var n = getN(); if (n === null) return;
+  var total = 0;
+  for (var i = 1; i <= n; i++) { total += i; }
+  document.getElementById("result").innerHTML = "The average of 1 up to " + n + " is " + (total / n) + ".";
+}
+</script></body></html>
